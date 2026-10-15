@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="An educational lab for password strength and breach awareness.">
+  <title>Password Strength & Breach Awareness Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">🔐</span>
+      <span>SecureLab<span class="brand-dot">.</span></span>
+    </a>
+    <span class="status"><span class="status-dot"></span> SECURITY LEARNING LAB</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">CYBERSECURITY AWARENESS PROJECT</div>
+      <h1>Password Strength <span>&amp; Breach</span><br>Awareness Lab</h1>
+      <p>
+        Evaluate password strength, understand common security risks,
+        and check whether a password appears in known breach datasets.
+      </p>
+      <div class="privacy-note">
+        <span>🛡️</span>
+        <span><strong>Privacy first:</strong> Strength analysis runs in your browser.
+          Breach checks use a privacy-preserving hash-prefix method.</span>
+      </div>
+    </section>
+
+    <section class="lab-grid">
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <div class="section-label">01 / ANALYZE</div>
+            <h2>Password Analyzer</h2>
+          </div>
+          <span class="heading-icon">⌁</span>
+        </div>
+
+        <label for="password">Enter a sample password</label>
+        <div class="password-input">
+          <input id="password" type="password"
+                 placeholder="Type a sample password..."
+                 autocomplete="off" spellcheck="false"
+                 autocapitalize="off">
+          <button id="togglePassword" type="button"
+                  class="show-btn" aria-label="Show password"
+                  aria-pressed="false">Show</button>
+        </div>
+
+        <p class="helper">Use a fictional test password, not a password you use for an account.</p>
+
+        <div class="strength-header">
+          <span>Strength assessment</span>
+          <strong id="strengthText">Not assessed</strong>
+        </div>
+        <div class="meter" role="progressbar"
+             aria-label="Password strength"
+             aria-valuemin="0" aria-valuemax="100"
+             aria-valuenow="0" id="strengthMeter">
+          <div id="meterFill"></div>
+        </div>
+        <div class="meter-caption">
+          <span>WEAK</span><span>MODERATE</span><span>STRONG</span>
+        </div>
+
+        <div class="score-row">
+          <span>Security score</span>
+          <strong><span id="score">0</span><small>/100</small></strong>
+        </div>
+
+        <h3 class="subheading">Password requirements</h3>
+        <ul class="requirements">
+          <li id="req-length"><span class="req-icon">○</span> At least 12 characters</li>
+          <li id="req-upper"><span class="req-icon">○</span> Uppercase letter (A–Z)</li>
+          <li id="req-lower"><span class="req-icon">○</span> Lowercase letter (a–z)</li>
+          <li id="req-number"><span class="req-icon">○</span> Number (0–9)</li>
+          <li id="req-symbol"><span class="req-icon">○</span> Special character</li>
+          <li id="req-long"><span class="req-icon">○</span> Prefer 16+ characters</li>
+        </ul>
+
+        <div class="advice-box">
+          <strong>💡 Security insight</strong>
+          <p id="advice">Enter a sample password to begin your analysis.</p>
+        </div>
+
+        <button id="clearBtn" class="secondary-btn" type="button">
+          Clear password
+        </button>
+      </article>
+
+      <article class="panel breach-panel">
+        <div class="panel-heading">
+          <div>
+            <div class="section-label">02 / INVESTIGATE</div>
+            <h2>Breach Awareness</h2>
+          </div>
+          <span class="heading-icon">⌕</span>
+        </div>
+
+        <div class="shield-illustration" aria-hidden="true">
+          <div class="shield">✓</div>
+          <span class="orbit orbit-one"></span>
+          <span class="orbit orbit-two"></span>
+        </div>
+
+        <h3 class="breach-title">Check known breach exposure</h3>
+        <p class="breach-description">
+          Check the sample against the Pwned Passwords database,
+          which contains passwords observed in known data breaches.
+        </p>
+
+        <button id="breachBtn" class="primary-btn" type="button">
+          <span>⌕</span> Check breach database
+        </button>
+
+        <div id="breachResult" class="breach-result" role="status"
+             aria-live="polite">
+          <div class="result-icon">i</div>
+          <div>
+            <strong>Ready to check</strong>
+            <p>Enter a sample password and start the check.</p>
+          </div>
+        </div>
+
+        <div class="privacy-card">
+          <span>🔒</span>
+          <div>
+            <strong>How privacy is protected</strong>
+            <p>
+              Your browser computes a SHA-1 hash. Only its first five
+              hexadecimal characters are sent to the service. The
+              returned hash suffixes are compared locally.
+            </p>
+          </div>
+        </div>
+
+        <p class="disclaimer">
+          A password not found in this database is not guaranteed safe.
+          A positive result does not identify which account was affected.
+        </p>
+      </article>
+    </section>
+
+    <section class="learn-section">
+      <div class="section-label">03 / LEARN</div>
+      <h2>Build better password habits</h2>
+      <div class="tips-grid">
+        <article class="tip-card">
+          <span class="tip-number">01</span>
+          <h3>Go for length</h3>
+          <p>Prefer long, unique passwords or passphrases. Length matters, but predictability matters too.</p>
+        </article>
+        <article class="tip-card">
+          <span class="tip-number">02</span>
+          <h3>Never reuse</h3>
+          <p>Give every account its own password to limit damage if one service is breached.</p>
+        </article>
+        <article class="tip-card">
+          <span class="tip-number">03</span>
+          <h3>Use a password manager</h3>
+          <p>A reputable password manager can generate and store unique passwords.</p>
+        </article>
+        <article class="tip-card">
+          <span class="tip-number">04</span>
+          <h3>Enable MFA</h3>
+          <p>Multi-factor authentication adds another layer of protection to your accounts.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <p>Password Strength &amp; Breach Awareness Lab</p>
+      <p>Educational project · HTML, CSS &amp; JavaScript</p>
+      <p class="footer-small">
+        Breach source:
+        <a href="https://haveibeenpwned.com/Passwords"
+           target="_blank" rel="noopener noreferrer">Have I Been Pwned — Pwned Passwords</a>
+      </p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
